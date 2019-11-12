@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ssm.dao.UserDao">
+
+    <!--根据用户userName查询用户所有信息-->
+    <select id="selectUser" parameterType="string" resultType="ssm.domain.User">
+        SELECT * FROM user WHERE userName = #{userName}
+    </select>
+
+    <!--设置用户积分     参数类型  score，userName -->
+    <update id="setScore">
+        UPDATE user SET score = score+ #{0} WHERE userName = #{1}
+    </update>
+
+
+    <!--设置游戏赢家-->
+    <update id="setWinner" parameterType="String">
+        UPDATE user SET wins = wins+1 WHERE userName = #{userName}
+    </update>
+</mapper>
